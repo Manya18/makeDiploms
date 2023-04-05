@@ -2,9 +2,9 @@ import useStore from "./useStore";
 
 function Diplom() {
 
-    const {nameImage, increment, decrement, reset } = useStore()
+    const {nameImage } = useStore()
     return (
-      <div style={{border: 1, borderColor: "black"}}>
+      <div>
       <img src={`${nameImage}`}></img> конец страницы
       </div>
     );
