@@ -1,11 +1,12 @@
 import useStore from "./useStore";
+import './styles/diplomPageStyles.css'
 
 function Diplom() {
 
     const {nameImage } = useStore()
     return (
-      <div>
-      <img src={`${nameImage}`}></img> конец страницы
+      <div className="diplomPage">
+        <img src={`${nameImage}`}></img>
       </div>
     );
   }

@@ -1,0 +1,13 @@
+.App {
+    display: grid;
+    grid-template-columns: 700fr 200fr;
+}
+
+.diplomPage {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
