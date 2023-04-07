@@ -6,21 +6,8 @@ import useStore from "./useStore";
 function CreateField() {
     const [fieldPos, setfieldPos] = useState({x: 0, y: 0});
     const[resize, setResize] = useState(0);
-    const [fieldId, setFieldId] = useStore();
 
-    setFieldId(
-    <div {...bindfieldPos()} style={{
-        position: 'relative',
-        top: fieldPos.y,
-        left: fieldPos.x,
-        }}>
-        <Resizable onResizeStop={() => {
-            setResize({
-            width: resize.width, height: resize.height});
-            }}>
-         000
-        </Resizable>
-    </div>);
+    const { fields, fieldId, setFieldId, setNameImage} = useStore();
 
     const bindfieldPos = useDrag((params) => {
         setfieldPos({
@@ -30,17 +17,19 @@ function CreateField() {
     });
     
     return(
-        <div className="z-ind1" {...bindfieldPos()} style={{
-            position: 'relative',
-            top: fieldPos.y,
-            left: fieldPos.x,
-            }}>
-            <Resizable onResizeStop={() => {
-                setResize({
-                width: resize.width, height: resize.height});
+        <div>
+            <div className="diplomPage" {...bindfieldPos()} style={{
+                position: 'relative',
+                top: fieldPos.y,
+                left: fieldPos.x,
                 }}>
-             000
-            </Resizable>
+                <Resizable onResizeStop={() => {
+                    setResize({
+                    width: resize.width, height: resize.height});
+                    }}>
+
+                </Resizable>
+            </div>
         </div>
     );
 }
