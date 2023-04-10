@@ -4,10 +4,9 @@
 }
 
 .diplomPage {
-    display: flex;
     padding: 15px;
+    width: 620px;
+    height: 877px;
     border: 2px solid teal;
     align-items: center;
-    display: flex;
-    flex-direction: column;
 }

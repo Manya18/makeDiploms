@@ -3,6 +3,8 @@ import './styles/diplomPageStyles.css'
 import CreateField from "./createField";
 import Papa from 'papaparse'
 import React, { useState } from "react";
+import PDFexporter from "./PDFexporter";
+import Diplom from "./DiplomPage";
 
 function SetImage() {
     const { fields, fieldId, setFieldId, setNameImage} = useStore();
@@ -57,7 +59,8 @@ function SetImage() {
       <div className="diplomPage">
         <input  
             type="file" onChange={(e)=> readFile(e)}/>
-            <input type="file" accept='.csv' onChange={(e) => handleFile(e)}/>
+        <input type="file" accept='.csv' onChange={(e) => handleFile(e)}/>
+
       </div>
     );
   }
