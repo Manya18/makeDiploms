@@ -18,10 +18,11 @@ function CreateField() {
     
     return(
         <div>
-            <div className="diplomPage" {...bindfieldPos()} style={{
+            <div className="field" {...bindfieldPos()} id="fieldStyle" style={{
                 position: 'relative',
                 top: fieldPos.y,
                 left: fieldPos.x,
+                border: "2px solid teal",
                 }}>
                 <Resizable onResizeStop={() => {
                     setResize({
