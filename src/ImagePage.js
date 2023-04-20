@@ -29,17 +29,19 @@ function SetImage() {
     const[columnsArray, setColumn] = useState([]);
     const[values, setValues] = useState([]);
 
+    const {parseData, setParseData, parseColumnsArray, parseValuesArray, setParseColumnsArray, setParsevaluesArray } = useStore();
 
     const handleFile = (event) => 
     {
       Papa.parse(event.target.files[0], {
         header: true,
-        encoding: "latin-1",
+        encoding: "utf-8",
         skipEmptyLines:true,
         complete: function(result) {
           const columnsArray = [];
           const valuesArray = [];
 
+          console.log("result", result);
           result.data.map((d) => {
             columnsArray.push(Object.keys(d));
             valuesArray.push(Object.values(d));
@@ -47,11 +49,16 @@ function SetImage() {
           setData(result.data);
           setColumn(columnsArray[0]);
           setValues(valuesArray);
-          console.log("klkl", result.data, columnsArray[0], valuesArray);
 
+          setParseData(result.data);
+          setParseColumnsArray(columnsArray[0]);
+          setParsevaluesArray(valuesArray);
+
+          console.log("result.data", result.data, valuesArray);
+          console.log("columnsArray[0]", columnsArray[0], valuesArray);
+          console.log("valuesArray", valuesArray);
         }
       })
-      console.log("klkl", columnsArray, values);
     }
 
 
@@ -60,7 +67,7 @@ function SetImage() {
         <input  
             type="file" onChange={(e)=> readFile(e)}/>
         <input type="file" accept='.csv' onChange={(e) => handleFile(e)}/>
-
+        {/* <button onClick={CreateField()}> Create FIELDS</button> */}
       </div>
     );
   }
