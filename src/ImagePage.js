@@ -59,8 +59,21 @@ function SetImage() {
           console.log("valuesArray", valuesArray);
         }
       })
+
+      console.log("klkl", columnsArray, values);
+      drawField();
+      console.log("fields", fields);
     }
 
+    function drawField() {
+      for(let i=0; i<columnsArray.length; i++)
+      {
+        fields[i] = document.createElement('div');
+        fields[i].className = columnsArray[i];
+        fields[i].id = columnsArray[i];
+        fields[i].innerHTML = `<div {...bindfieldPos()} id=${columnsArray[i]} style={{ position: 'relative', top: fieldPos.y, left: fieldPos.x, border: '2px solid teal',}}> <Resizable onResizeStop={() => { setResize({ width: resize.width, height: resize.height});}}> </Resizable> </div>`;
+      }
+    }
 
     return (
       <div className="diplomPage">
