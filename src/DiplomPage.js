@@ -7,22 +7,29 @@ function Diplom() {
 
   console.log("parseValuesArray", parseValuesArray);
   
+  let result=[];
+  // .entries(parseValuesArray[0])
+  // .map(entry => ({[entry[0]]: entry[1]}));
+// console.log("result", parseValuesArray[0]);
+  console.log("jjj", parseValuesArray.length);
 
+  if(parseValuesArray.length!=0)
+  {
+    for (let value of parseValuesArray[0]) 
+    {
+      result.push(value);
+    }
+  }
+  else
+    result.push(0);
 
-
-
-  let i=0;
-
-  parseData.map((d, i) => {
-    console.log("d"+i, d[i]);
-  })
     const {nameImage } = useStore()
     return (
       <div className="diplomPage">
         <img src={`${nameImage}`}></img>
         {/* `${Object.keys(parseData[0])}` */}
-        {parseValuesArray.map((d, i) => (
-          <CreateField value={d[i]}></CreateField>
+        {result.map((d) => (
+          <CreateField value={d}></CreateField>
         ))}
       </div>
     );
