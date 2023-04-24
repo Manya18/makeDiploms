@@ -3,7 +3,6 @@ import './styles/diplomPageStyles.css'
 import Papa from 'papaparse'
 import React from "react";
 import '@progress/kendo-theme-default';
-import ReadFileImage from "./ReadFileImage";
 
 function ParseFile() {
     const {setParseValuesArray } = useStore();

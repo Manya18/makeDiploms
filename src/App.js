@@ -29,15 +29,7 @@ function App() {
       if(i<parseValuesArray.length) setIndex(i);  
     }
   }
-
-  function Export(){
-    for(let i=0; i<diploms.length; i++)
-    {
-      diploms[i].save();
-      console.log("saved!")
-    }
-  }
-
+  
   return (
     <div className="App">
       
@@ -46,7 +38,6 @@ function App() {
       </PDFExport>
       <SetImage></SetImage>
       <Button onClick={handleExportWithComponent}>Добавить</Button>
-      <Button onClick={Export}>Export</Button>
     </div>
   );
 }
