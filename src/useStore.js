@@ -2,17 +2,14 @@ import { create } from "zustand";
 
 const useStore = create((set, get) => ({
     nameImage: '',
-    fieldId: '',
-    fields: [],
-    parseData: [],
-    parseColumnsArray:[],
     parseValuesArray:[],
-    setFieldI: (a) => set((state) => ({fieldId: a})),
-    setFieldId: (a) => set((state) => ({fieldId: a})),
+    diploms:[],
+    index: 0,
     setNameImage: (a) => set((state) => ({ nameImage: a })),
-    setParseData: (a) => set((state) => ({parseData: a})),
-    setParseColumnsArray: (a) => set((state) => ({parseColumnsArray: a})),
-    setParsevaluesArray: (a) => set((state) => ({parseValuesArray: a})),
+    setParseValuesArray: (a) => set((state) => ({parseValuesArray: a})),
+    setDiploms: (a) => set((state) => ({diploms: a})),
+    setIndex: (a) => set((state) => ({ index: a })),
+
    }))
    
    export default useStore

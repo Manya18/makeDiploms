@@ -2,20 +2,17 @@ import useStore from "./useStore";
 import './styles/diplomPageStyles.css'
 import CreateField from "./createField";
 
-function Diplom() {
-  const { parseData, parseColumnsArray, parseValuesArray } = useStore();
+const Diplom = () => {
+  const { parseValuesArray, index } = useStore();
 
   console.log("parseValuesArray", parseValuesArray);
-  
+  console.log("index", index);
+
   let result=[];
-  // .entries(parseValuesArray[0])
-  // .map(entry => ({[entry[0]]: entry[1]}));
-// console.log("result", parseValuesArray[0]);
-  console.log("jjj", parseValuesArray.length);
 
   if(parseValuesArray.length!=0)
   {
-    for (let value of parseValuesArray[0]) 
+    for (let value of parseValuesArray[index]) 
     {
       result.push(value);
     }

@@ -11,26 +11,32 @@ import { useRef } from 'react';
 
 function App() {
 
-  let diploms=[];
-  let i=0;
   const pdfExportComponent = useRef(null);
 
-  const handleWithComponent = (event) => {
-    console.log("click", pdfExportComponent.current);
-    diploms[i]=pdfExportComponent.current;
-    i++;
-  };
+  const { diploms,setDiploms, setIndex, index, parseValuesArray} = useStore();
 
+  let i = index;
   const handleExportWithComponent = (event) => {
-    console.log("fdf", diploms);
-    document.getElementById('fieldStyle').style.border ='initial';
-    for(let i=0; i<diploms.length; i++)
+    console.log("jkjk", i, parseValuesArray.length)
+    if(i<parseValuesArray.length)
     {
-      console.log("cck", diploms);
+      console.log("i", i);
+      diploms[i]=pdfExportComponent.current;
       diploms[i].save();
+      i++;
+      setDiploms(diploms);
+      console.log("diploms", diploms);
+      if(i<parseValuesArray.length) setIndex(i);  
     }
   }
 
+  function Export(){
+    for(let i=0; i<diploms.length; i++)
+    {
+      diploms[i].save();
+      console.log("saved!")
+    }
+  }
 
   return (
     <div className="App">
@@ -39,9 +45,8 @@ function App() {
         <Diplom ></Diplom>
       </PDFExport>
       <SetImage></SetImage>
-      <Button onClick={handleWithComponent}>Добавить</Button>
-      <Button onClick={handleExportWithComponent}>Export</Button>
-
+      <Button onClick={handleExportWithComponent}>Добавить</Button>
+      <Button onClick={Export}>Export</Button>
     </div>
   );
 }
