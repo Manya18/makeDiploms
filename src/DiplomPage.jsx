@@ -5,7 +5,6 @@ import CreateField from "./createField";
 const Diplom = () => {
   const { parseValuesArray, index } = useStore();
 
-  console.log("parseValuesArray", parseValuesArray);
   console.log("index", index);
 
   let result=[];
@@ -22,9 +21,11 @@ const Diplom = () => {
 
     const {nameImage } = useStore()
     return (
-      <div className="diplomPage">
-        <img src={`${nameImage}`}></img>
-        {/* `${Object.keys(parseData[0])}` */}
+      <div className="diplomPage" style={{backgroundImage: `url(${nameImage})`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: '100%'}}>
         {result.map((d) => (
           <CreateField value={d}></CreateField>
         ))}
