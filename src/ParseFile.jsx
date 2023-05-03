@@ -7,11 +7,11 @@ import '@progress/kendo-theme-default';
 function ParseFile() {
     const {setParseValuesArray } = useStore();
 
-    const handleFile = (event) => 
+    const handleFile = (event) =>
     {
       Papa.parse(event.target.files[0], {
         header: true,
-        encoding: "utf-8",
+        encoding: "Windows-1251",
         skipEmptyLines:true,
         complete: function(result) {
           const valuesArray = [];
@@ -31,6 +31,5 @@ function ParseFile() {
       </div>
     );
   }
-  
+
   export default ParseFile;
-  

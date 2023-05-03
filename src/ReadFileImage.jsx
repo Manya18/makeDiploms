@@ -17,6 +17,8 @@ function ReadFileImage() {
         reader.readAsDataURL(file);
     }
 
+
+
     return (
       <div className="ReadFileImage">
         <label>Загрузить изображение </label>
@@ -24,6 +26,5 @@ function ReadFileImage() {
       </div>
     );
   }
-  
+
   export default ReadFileImage;
-  

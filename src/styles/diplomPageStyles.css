@@ -1,16 +1,55 @@
 .App {
     display: grid;
-    grid-template-columns: 700fr 200fr;
+    grid-template-columns: 600fr 400fr;
 }
+
+.imagePage {
+  padding: 15px;
+  /* width: 50vh; */
+  height: 90vh;
+  border: 2px solid teal;
+  align-items: center;
+}
+
 
 .diplomPage {
     padding: 15px;
-    width: 620px;
-    height: 877px;
-    border: 2px solid teal;
+    /* width: 100vh;*/
+    height: 90vh;
     align-items: center;
 }
 
-.field {
-    border: 2px solid teal;
+div {
+  font-family: "DejaVu Sans", "Arial", sans-serif;
+  /* font-size: 25px; */
+}
+
+/*
+  The example loads the DejaVu Sans from the Kendo UI CDN.
+  Other fonts have to be hosted from your application.
+  The official site of the Deja Vu Fonts project is
+  https://dejavu-fonts.github.io/.
+*/
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-weight: bold;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: italic;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-weight: bold;
+  font-style: italic;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf") format("truetype");
 }

@@ -5,6 +5,7 @@ import useStore from "./useStore";
 import '@progress/kendo-theme-default';
 import { Button } from "@progress/kendo-react-buttons";
 import { PDFExport } from "@progress/kendo-react-pdf";
+import "./styles/diplomPageStyles.css";
 
 import { useRef } from 'react';
 
@@ -26,13 +27,12 @@ function App() {
       i++;
       setDiploms(diploms);
       console.log("diploms", diploms);
-      if(i<parseValuesArray.length) setIndex(i);  
+      if(i<parseValuesArray.length) setIndex(i);
     }
   }
-  
+
   return (
-    <div className="App">
-      
+    <div className="App" >
       <PDFExport ref={pdfExportComponent}>
         <Diplom ></Diplom>
       </PDFExport>

@@ -1,4 +1,4 @@
-import React, {useState} from "react"; 
+import React, {useState} from "react";
 import { useDrag } from "react-use-gesture";
 import { Resizable } from "re-resizable";
 
@@ -12,7 +12,7 @@ const CreateField = (props) => {
             y: params.offset[1],
         });
     });
-    
+
     return(
         <div>
             <div {...bindfieldPos()} id="field" style={{
@@ -20,6 +20,8 @@ const CreateField = (props) => {
                 top: fieldPos.y,
                 left: fieldPos.x,
                 display: 'inline-block',
+                // border: '2px solid teal',
+                whiteSpace: 'pre',
                 }}>
                 <Resizable onResizeStop={() => {
                     setResize({
