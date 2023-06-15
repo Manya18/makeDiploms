@@ -1,5 +1,5 @@
-import Diplom from "./pages/PreviewPage";
-import SetImage from "./pages/FunctionalPage";
+import PreviewPage from "./pages/PreviewPage";
+import FunctionalPage from "./pages/FunctionalPage";
 import useStore from "./useStore";
 
 import '@progress/kendo-theme-default';
@@ -34,9 +34,9 @@ function App() {
   return (
     <div className="App" >
       <PDFExport fileName={parseValuesArray[index]} ref={pdfExportComponent}>
-        <Diplom ></Diplom>
+        <PreviewPage ></PreviewPage>
       </PDFExport>
-      <SetImage></SetImage>
+      <FunctionalPage></FunctionalPage>
       <Button onClick={handleExportWithComponent}>Экспортировать</Button>
     </div>
   );

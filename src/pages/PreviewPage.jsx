@@ -2,7 +2,7 @@ import useStore from "../useStore";
 import '../styles/diplomPageStyles.css'
 import CreateField from "../components/createField";
 
-const Diplom = () => {
+const PreviewPage = () => {
   const { parseValuesArray, index, nameImage, fontSize, format, setExportFileName } = useStore();
 
   console.log("index", index);
@@ -44,4 +44,4 @@ const Diplom = () => {
     );
   }
 
-  export default Diplom;
+  export default PreviewPage;

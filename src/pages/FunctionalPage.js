@@ -6,7 +6,7 @@ import ParseFile from "../components/ParseFile";
 import ChooseFormat from '../components/chooseFormat';
 import useStore from '../useStore';
 
-function SetImage() {
+function FunctionalPage() {
   const {setFontSize } = useStore();
     return (
       <div className="imagePage">
@@ -18,5 +18,5 @@ function SetImage() {
     );
   }
   
-  export default SetImage;
+  export default FunctionalPage;
   
