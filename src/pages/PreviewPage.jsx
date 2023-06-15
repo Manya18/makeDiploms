@@ -1,12 +1,12 @@
-import useStore from "./useStore";
-import './styles/diplomPageStyles.css'
-import CreateField from "./createField";
+import useStore from "../useStore";
+import '../styles/diplomPageStyles.css'
+import CreateField from "../components/createField";
 
 const Diplom = () => {
-  const { parseValuesArray, index, nameImage, fontSize, format } = useStore();
+  const { parseValuesArray, index, nameImage, fontSize, format, setExportFileName } = useStore();
 
   console.log("index", index);
-  console.log("fontSize", fontSize);
+  console.log("parseValuesArray", parseValuesArray);
   let x, y;
   if(format)
   {
@@ -18,7 +18,6 @@ const Diplom = () => {
     x = '620px';
   }
   let result=[];
-
   if(parseValuesArray.length!==0)
   {
     for (let value of parseValuesArray[index])
@@ -27,14 +26,14 @@ const Diplom = () => {
     }
   }
   else
-    result.push(0);
-
+  {
+    result.push('0');
+  }
     return (
       <div className="diplomPage"
         style={{backgroundImage: `url(${nameImage})`,
         backgroundSize: 'cover',
         fontSize: `${fontSize}px`,
-        // backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         height: y,
         width: x}}>

@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import { useDrag } from "react-use-gesture";
-import { Resizable } from "re-resizable";
+import useStore from "../useStore";
 
 const CreateField = (props) => {
     const [fieldPos, setfieldPos] = useState({x: 0, y: 0});
     const[resize, setResize] = useState(0);
+
 
     const bindfieldPos = useDrag((params) => {
         setfieldPos({
@@ -16,19 +17,14 @@ const CreateField = (props) => {
     return(
         <div>
             <div {...bindfieldPos()} id="field" style={{
+                width: '620px',
                 position: 'relative',
                 top: fieldPos.y,
-                left: fieldPos.x,
+                textAlign: 'center',
                 display: 'inline-block',
-                // border: '2px solid teal',
                 whiteSpace: 'pre',
                 }}>
-                <Resizable onResizeStop={() => {
-                    setResize({
-                    width: resize.width, height: resize.height});
-                    }}>
                 {props.value}
-                </Resizable>
             </div>
         </div>
     );

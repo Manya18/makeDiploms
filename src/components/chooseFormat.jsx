@@ -1,6 +1,6 @@
 import { ButtonGroup } from "@progress/kendo-react-buttons";
 import React, {useState} from "react";
-import useStore from "./useStore";
+import useStore from "../useStore";
 
 
 const ChooseFormat = () => {
