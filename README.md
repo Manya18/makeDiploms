@@ -1,3 +1,10 @@
+# Make Diploms
+
+## Run with docker
+
+First step - build docker image: `docker build --tag make-diploms .`  
+Second step - run image with `docker run --name make-diploms -p 3000:3000 make-diploms`  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
