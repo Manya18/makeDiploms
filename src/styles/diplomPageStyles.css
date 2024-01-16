@@ -1,23 +1,23 @@
 .App {
-    display: grid;
-    grid-template-columns: 600fr 400fr;
+    /* display: grid;
+    grid-template-columns: 600fr 400fr; */
 }
 
-.imagePage {
+/* .imagePage {
   padding: 15px;
   /* width: 50vh; */
-  height: 90vh;
+  /* height: 90vh;
   border: 2px solid teal;
   align-items: center;
-}
+} */ */
 
 
-.diplomPage {
+/* .diplomPage {
     padding: 15px;
     /* width: 100vh;*/
-    height: 90vh;
+    /* height: 90vh;
     align-items: center;
-}
+} */ */
 
 div {
   font-family: "DejaVu Sans", "Arial", sans-serif;
