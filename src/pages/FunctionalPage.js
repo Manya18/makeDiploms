@@ -5,30 +5,33 @@ import ReadFileImage from "../components/ReadFileImage";
 import ParseFile from "../components/ParseFile";
 import ChooseFormat from '../components/chooseFormat';
 import useStore from '../useStore';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Radio, FormControl, FormLabel, RadioGroup, FormControlLabel } from '@mui/material';
 
 function FunctionalPage() {
-  const [formatFIO, setFormatFIO] = useState(false);
+  const [formatFIO, setFormatFIO] = useState('FIO');
   const {setFontSize, setFormatName, formatName } = useStore();
+
+  const handleChange = (event) => {
+    setFormatFIO(event.target.value);
+  };
   
     return (
       <div className="imagePage">
         <ReadFileImage/>
         <ParseFile/>
         <ChooseFormat/>
-        <input type="number" value ="20" onChange={(e)=> setFontSize(e.target.value)}/>
-        <FormControlLabel
-            control={
-              <Checkbox checked={!formatFIO} onChange={() => {setFormatFIO(!formatFIO); setFormatName(formatFIO)}} name="FIO" />
-            }
-            label="ФИО полностью"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={formatFIO} onChange={() => {setFormatFIO(!formatFIO); setFormatName(formatFIO)}} name="FI" />
-            }
-            label="Фамилия Имя"
-          />
+        <input type="number" value ="20" onChange={(e)=> setFontSize(e.target.value)}/><br/>
+        <FormControl>
+          <FormLabel id="demo-controlled-radio-buttons-group">Формат ФИО</FormLabel>
+            <RadioGroup
+              name="controlled-radio-buttons-group"
+              value={formatFIO}
+              onChange={handleChange}
+            >
+              <FormControlLabel value='FIO' control={<Radio />} label="ФИО полностью" />
+              <FormControlLabel value="FI" control={<Radio />} label="Фамилия Имя" />
+            </RadioGroup>
+        </FormControl>
       </div>
     );
   }
