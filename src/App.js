@@ -6,17 +6,15 @@ import '@progress/kendo-theme-default';
 import { Button } from "@progress/kendo-react-buttons";
 import { PDFExport } from "@progress/kendo-react-pdf";
 import "./styles/diplomPageStyles.css";
-import { usePDF } from 'react-to-pdf';
 import { useRef } from 'react';
-import {PreviewA4} from "@diagoriente/react-preview-a4";
-
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
 function App() {
-  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
   const pdfExportComponent = useRef(null);
 
-  const { diploms,setDiploms, setIndex, index, parseValuesArray} = useStore();
-
+  const { setDiploms, setIndex, index, parseValuesArray} = useStore();
+  let diploms=[];
+  let i=0;
   // let i = index;
   const handleExportWithComponent = (e) => {
     console.log("jkjk", index, parseValuesArray.length)
@@ -24,8 +22,8 @@ function App() {
     {
       // console.log("i", index, pdfExportComponent.current.props.fileName[index]);
       // diploms.push(pdfExportComponent.current);
-      setDiploms(pdfExportComponent.current);
-      // i++;
+      // setDiploms(pdfExportComponent.current);
+      diploms[index]=pdfExportComponent;
       console.log("diploms", diploms);
       if(index<parseValuesArray.length) setIndex(index + 1);
     }
@@ -34,21 +32,24 @@ function App() {
   const handleExport = (event) => {
     for(let i=0; i< diploms.length; i++)
     {
-      diploms[i].save();
+      exportComponentAsPNG(diploms[i])
       console.log(diploms, diploms[i])
     }
   }
 
   return (
-    <div className="App" >
+    <div className="App"  >
       {/* <PDFExport ref={pdfExportComponent} paperSize='A4'>  */}
-      <div ref={targetRef} style={{height: '876.85px', width: '620px'}}>
+      <div ref={pdfExportComponent}>
           <PreviewPage ></PreviewPage>
       </div>
       {/* </PDFExport> */}
-      <FunctionalPage></FunctionalPage>
-      <Button onClick={() => {toPDF();setIndex(index + 1); }}>Предпросмотр</Button>
-
+      <div className="rightPanel">
+        <FunctionalPage></FunctionalPage>
+        <Button onClick={(e) => {handleExportWithComponent(e);setIndex(index + 1); }}>Предпросмотр</Button>
+        <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button>
+        <Button onClick={(e) => {exportComponentAsPNG(pdfExportComponent)}}>PNG</Button> 
+      </div>
       {/* <Button onClick={(e) => {handleExportWithComponent(e)}}>Предпросмотр</Button>
       <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button> */}
     </div>

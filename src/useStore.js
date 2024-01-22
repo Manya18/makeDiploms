@@ -8,7 +8,8 @@ const useStore = create((set, get) => ({
     fontSize: 20,
     format: false,
     exportFileName: '',
-    formatName: [],
+    formatName: 'FIO',
+    field: '',
     setNameImage: (a) => set((state) => ({ nameImage: a })),
     setParseValuesArray: (a) => set((state) => ({parseValuesArray: a})),
     setDiploms: (a) => set((state) => ({diploms: [...state.diploms, a]})),
@@ -17,6 +18,7 @@ const useStore = create((set, get) => ({
     setFontSize: (a) => set((state) => ({ fontSize: a })),
     setExportFileName: (a) => set((state) => ({ exportFileName: a })),
     setFormatName: (a) => set((state) => ({ formatName: a })),
+    setField: (a) => set((state) => ({ field: a }))
    }))
 
    export default useStore;

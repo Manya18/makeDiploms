@@ -20,6 +20,7 @@ const CreateField = (props) => {
                 width: '620px',
                 position: 'relative',
                 top: fieldPos.y,
+                left: fieldPos.x,
                 textAlign: 'center',
                 display: 'inline-block',
                 whiteSpace: 'pre',

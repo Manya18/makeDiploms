@@ -3,7 +3,7 @@ import '../styles/diplomPageStyles.css'
 import CreateField from "../components/createField";
 
 const PreviewPage = () => {
-  const { parseValuesArray, index, nameImage, fontSize, format, setExportFileName, setIndex } = useStore();
+  const { parseValuesArray, index, nameImage, fontSize, format, setExportFileName, setIndex, field, formatName } = useStore();
 
   console.log("index", index);
   console.log("parseValuesArray", parseValuesArray);
@@ -20,6 +20,7 @@ const PreviewPage = () => {
     y = '876.85px';
   }
   let result=[];
+  //проверка на наличие 2-го и 3-го участников команды
   if(parseValuesArray.length!==0)
   {
     console.log(index, parseValuesArray[index])
@@ -37,9 +38,24 @@ const PreviewPage = () => {
       parseValuesArray[index].Patronymic3=' '
     }
 
-    result.push(parseValuesArray[index].Surname1 + " " + parseValuesArray[index].Name1 + " " + parseValuesArray[index].Patronymic1 + '\n' +
-    parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + " " + parseValuesArray[index].Patronymic2 + '\n' +
-    parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3 + " " + parseValuesArray[index].Patronymic3)
+    //парсинг данных в соответствии с выбранным форматом имени
+    console.log("kkkk", formatName)
+    if(formatName==="FI")
+    {
+      result.push(parseValuesArray[index].Surname1 + " " + parseValuesArray[index].Name1 + '\n' +
+      parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + '\n' +
+      parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3)
+    }
+    else if(formatName==="FIO")
+    {
+      result.push(parseValuesArray[index].Surname1 + " " + parseValuesArray[index].Name1 + " " + parseValuesArray[index].Patronymic1 + '\n' +
+      parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + " " + parseValuesArray[index].Patronymic2 + '\n' +
+      parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3 + " " + parseValuesArray[index].Patronymic3);  
+    }
+    result.push(parseValuesArray[index].Tutor1)
+    result.push(parseValuesArray[index].Tutor2)
+    result.push(field);
+    console.log("result", result)
     // for (let value of parseValuesArray[index])
     // {
     //   result.push(value);

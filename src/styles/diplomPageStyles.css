@@ -1,8 +1,12 @@
 .App {
-    /* display: grid;
-    grid-template-columns: 600fr 400fr; */
+  display: flex;
+  justify-content: flex-start;
 }
 
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+}
 /* .imagePage {
   padding: 15px;
   /* width: 50vh; */
