@@ -21,8 +21,9 @@ function ReadFileImage() {
 
     return (
       <div className="ReadFileImage">
-        <label>Загрузить изображение </label>
-        <input type="file" onChange={(e)=> readFile(e)}/>
+        <label>Загрузить изображение 
+          <input type="file" onChange={(e)=> readFile(e)}/>
+          </label>
       </div>
     );
   }

@@ -7,11 +7,13 @@ const ChooseFormat = () => {
 const {setFormat} = useStore();
 
     return(
-        <div>
+        <div className="formatButtons">
+          <label> Формат изображения
           <ButtonGroup>
             <button onClick={() => setFormat(true)}>Горизонтально</button>
             <button onClick={() => setFormat(false)}>Вертикально</button>
           </ButtonGroup>
+          </label>
         </div>
     );
 }

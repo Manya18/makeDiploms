@@ -5,8 +5,9 @@ import useStore from "../useStore";
 const CreateField = (props) => {
     const [fieldPos, setfieldPos] = useState({x: 0, y: 0});
     const[resize, setResize] = useState(0);
+    const {textColor, font} = useStore();
 
-
+    console.log('textColor', textColor)
     const bindfieldPos = useDrag((params) => {
         setfieldPos({
             x: params.offset[0],
@@ -24,6 +25,8 @@ const CreateField = (props) => {
                 textAlign: 'center',
                 display: 'inline-block',
                 whiteSpace: 'pre',
+                color: textColor,
+                fontFamily: font,
                 }}>
                 {props.value}
             </div>

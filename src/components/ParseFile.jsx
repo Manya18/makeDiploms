@@ -27,7 +27,7 @@ function ParseFile() {
 
     return (
       <div className="ParseFile">
-        <label >Загрузить таблицу </label>
+        <label>Загрузить таблицу </label>
         <input
       type='file'
       accept='.xlsx, .xls'
