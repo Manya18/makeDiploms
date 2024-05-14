@@ -52,8 +52,10 @@ const PreviewPage = () => {
       parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + " " + parseValuesArray[index].Patronymic2 + '\n' +
       parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3 + " " + parseValuesArray[index].Patronymic3);  
     }
-    result.push(parseValuesArray[index].Tutor1)
-    result.push(parseValuesArray[index].Tutor2)
+    if(parseValuesArray[index].Tutor1)
+      result.push("Тренер:" + parseValuesArray[index].Tutor1)
+    if(parseValuesArray[index].Tutor2)
+      result.push("Тренер:" + parseValuesArray[index].Tutor2)
     if(parseValuesArray[index].Team)
       result.push("Команда " + parseValuesArray[index].Team)
     result.push(field);

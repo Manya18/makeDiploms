@@ -47,7 +47,7 @@ function App() {
       <div className="rightPanel">
         <FunctionalPage></FunctionalPage>
         <Button onClick={(e) => {handleExportWithComponent(e);setIndex(index + 1); }}>Предпросмотр</Button>
-        <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button>
+        {/* <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button> */}
         <Button onClick={(e) => {exportComponentAsPNG(pdfExportComponent)}}>PNG</Button> 
       </div>
       {/* <Button onClick={(e) => {handleExportWithComponent(e)}}>Предпросмотр</Button>
