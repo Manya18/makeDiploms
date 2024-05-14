@@ -17,7 +17,7 @@ function ParseFile() {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const parsedData = XLSX.utils.sheet_to_json(sheet, {type: "UTF-8"});
-        parsedData.unshift({Name1:"Имя", Surname1: "Фамилия", Patronymic1:"Отчество", Class1:"Класс", Name2:"Имя", Surname2: "Фамилия", Patronymic2:"Отчество", Class2:"Класс",Name3:"Имя", Surname3: "Фамилия", Patronymic3:"Отчество", Class3:"Класс", Tutor1:"Имя Фамилия Тренер1",Tutor2: "Имя Фамилия Тренер"})
+        parsedData.unshift({Name1:"Имя", Surname1: "Фамилия", Patronymic1:"Отчество", Class1:"Класс", Name2:"Имя", Surname2: "Фамилия", Patronymic2:"Отчество", Class2:"Класс",Name3:"Имя", Surname3: "Фамилия", Patronymic3:"Отчество", Class3:"Класс", Tutor1:"Имя Фамилия Тренер1",Tutor2: "Имя Фамилия Тренер", Team: "Название Команды"})
         setData(parsedData);
         setParseValuesArray(parsedData)
       }

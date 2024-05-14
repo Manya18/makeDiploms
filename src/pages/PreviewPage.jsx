@@ -54,6 +54,8 @@ const PreviewPage = () => {
     }
     result.push(parseValuesArray[index].Tutor1)
     result.push(parseValuesArray[index].Tutor2)
+    if(parseValuesArray[index].Team)
+      result.push("Команда " + parseValuesArray[index].Team)
     result.push(field);
     console.log("result", result)
     // for (let value of parseValuesArray[index])
