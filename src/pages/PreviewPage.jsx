@@ -5,85 +5,58 @@ import CreateField from "../components/createField";
 const PreviewPage = () => {
   const { parseValuesArray, index, nameImage, fontSize, format, setExportFileName, setIndex, field, formatName } = useStore();
 
-  console.log("index", index);
-  console.log("parseValuesArray", parseValuesArray);
-  let x, y;
-  if(format)
-  {
-    //горизонтальный
-    x = '877px';
-    y = '620px';
-  }
-  else{
-    //вертикальный
-    x = '620px';
-    y = '876.85px';
-  }
-  let result=[];
-  //проверка на наличие 2-го и 3-го участников команды
-  if(parseValuesArray.length!==0)
-  {
-    console.log(index, parseValuesArray[index])
-    if(parseValuesArray[index].Surname2===undefined) 
-    {
-      parseValuesArray[index].Surname2=' ';
-      parseValuesArray[index].Name2=' '
-      parseValuesArray[index].Patronymic2=' '
+  const [x, y] = format ? ['877px', '620px'] : ['620px', '876.85px'];
+
+  let result = [];
+
+  // Проверка на наличие данных
+  if (parseValuesArray.length > 0) {
+    const currentValues = parseValuesArray[index];
+
+    // Заполнение пустых значений для 2-го и 3-го участников команды
+    for (let i = 2; i <= 3; i++) {
+      if (!currentValues || !currentValues[`Surname${i}`]) {
+        currentValues[`Surname${i}`] = ' ';
+        currentValues[`Name${i}`] = ' ';
+        currentValues[`Patronymic${i}`] = ' ';
+      }
     }
 
-    if(parseValuesArray[index].Surname3===undefined) 
-    {
-      parseValuesArray[index].Surname3=' ';
-      parseValuesArray[index].Name3=' '
-      parseValuesArray[index].Patronymic3=' '
+    // Парсинг данных в соответствии с выбранным форматом имени
+    const formattedNames = [];
+    for (let i = 1; i <= 3; i++) {
+      const namePart = formatName === "FI" 
+        ? `${currentValues[`Surname${i}`]} ${currentValues[`Name${i}`]}` 
+        : `${currentValues[`Surname${i}`]} ${currentValues[`Name${i}`]} ${currentValues[`Patronymic${i}`]}`;
+      formattedNames.push(namePart);
     }
 
-    //парсинг данных в соответствии с выбранным форматом имени
-    console.log("kkkk", formatName)
-    if(formatName==="FI")
-    {
-      result.push(parseValuesArray[index].Surname1 + " " + parseValuesArray[index].Name1 + '\n' +
-      parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + '\n' +
-      parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3)
-    }
-    else if(formatName==="FIO")
-    {
-      result.push(parseValuesArray[index].Surname1 + " " + parseValuesArray[index].Name1 + " " + parseValuesArray[index].Patronymic1 + '\n' +
-      parseValuesArray[index].Surname2 + " " + parseValuesArray[index].Name2 + " " + parseValuesArray[index].Patronymic2 + '\n' +
-      parseValuesArray[index].Surname3 + " " + parseValuesArray[index].Name3 + " " + parseValuesArray[index].Patronymic3);  
-    }
-    if(parseValuesArray[index].Tutor1)
-      result.push("Тренер:" + parseValuesArray[index].Tutor1)
-    if(parseValuesArray[index].Tutor2)
-      result.push("Тренер:" + parseValuesArray[index].Tutor2)
-    if(parseValuesArray[index].Team)
-      result.push("Команда " + parseValuesArray[index].Team)
+    result.push(formattedNames.join('\n'));
+
+    // Добавление тренеров и команды, если они существуют
+    if (currentValues.Tutor1) result.push(`Тренер: ${currentValues.Tutor1}`);
+    if (currentValues.Tutor2) result.push(`Тренер: ${currentValues.Tutor2}`);
+    if (currentValues.Team) result.push(`Команда ${currentValues.Team}`);
     result.push(field);
-    console.log("result", result)
-    // for (let value of parseValuesArray[index])
-    // {
-    //   result.push(value);
-    // }
-  }
-  else
-  {
+  } else {
     result.push('0');
   }
-  // setIndex(index+1)
-    return (
-      <div className="diplomPage"
-        style={{backgroundImage: `url(${nameImage})`,
+
+  return (
+    <div className="diplomPage"
+      style={{
+        backgroundImage: `url(${nameImage})`,
         backgroundSize: 'cover',
         fontSize: `${fontSize}px`,
         backgroundPosition: 'center',
         height: y,
         width: x
-        }}>
-        {result.map((d) => (
-          <CreateField value={d}></CreateField>
-        ))}
-      </div>
-    );
-  }
+      }}>
+      {result.map((d, idx) => (
+        <CreateField key={idx} value={d}></CreateField>
+      ))}
+    </div>
+  );
+}
 
-  export default PreviewPage;
+export default PreviewPage;

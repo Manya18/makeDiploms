@@ -1,57 +1,34 @@
-import PreviewPage from "./pages/PreviewPage";
-import FunctionalPage from "./pages/FunctionalPage";
-import useStore from "./useStore";
-
+import React, { useRef } from 'react';
+import PreviewPage from './pages/PreviewPage';
+import FunctionalPage from './pages/FunctionalPage';
+import useStore from './useStore';
 import '@progress/kendo-theme-default';
-import { Button } from "@progress/kendo-react-buttons";
-import { PDFExport } from "@progress/kendo-react-pdf";
-import "./styles/diplomPageStyles.css";
-import { useRef } from 'react';
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import { Button } from '@progress/kendo-react-buttons';
+import { exportComponentAsPNG } from 'react-component-export-image';
 
 function App() {
   const pdfExportComponent = useRef(null);
+  const { setIndex, index, parseValuesArray } = useStore();
+  const currentValues = parseValuesArray[index];
 
-  const { setDiploms, setIndex, index, parseValuesArray} = useStore();
-  let diploms=[];
-  let i=0;
-  // let i = index;
-  const handleExportWithComponent = (e) => {
-    console.log("jkjk", index, parseValuesArray.length)
-    if(index<parseValuesArray.length)
-    {
-      // console.log("i", index, pdfExportComponent.current.props.fileName[index]);
-      // diploms.push(pdfExportComponent.current);
-      // setDiploms(pdfExportComponent.current);
-      diploms[index]=pdfExportComponent;
-      console.log("diploms", diploms);
-      if(index<parseValuesArray.length) setIndex(index + 1);
+  const handleExportWithComponent = () => {
+    if (index < parseValuesArray.length) {
+      setIndex(index + 1);
+      const currentValues = parseValuesArray[index];
+      exportComponentAsPNG(pdfExportComponent, { fileName: `${currentValues.Team}.png` });    
     }
-  }
-
-  const handleExport = (event) => {
-    for(let i=0; i< diploms.length; i++)
-    {
-      exportComponentAsPNG(diploms[i])
-      console.log(diploms, diploms[i])
-    }
-  }
+  };
 
   return (
-    <div className="App"  >
-      {/* <PDFExport ref={pdfExportComponent} paperSize='A4'>  */}
+    <div className="App">
       <div ref={pdfExportComponent}>
-          <PreviewPage ></PreviewPage>
+        <PreviewPage />
       </div>
-      {/* </PDFExport> */}
       <div className="rightPanel">
-        <FunctionalPage></FunctionalPage>
-        <Button onClick={(e) => {handleExportWithComponent(e);setIndex(index + 1); }}>Предпросмотр</Button>
-        {/* <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button> */}
-        <Button onClick={(e) => {exportComponentAsPNG(pdfExportComponent)}}>PNG</Button> 
+        <FunctionalPage />
+        <Button onClick={handleExportWithComponent}>Экспортировать PNG</Button>
+        {/* <Button onClick={() => exportComponentAsPNG(pdfExportComponent, { fileName: `${currentValues.Team}.png` })}>Экспортировать PNG</Button> */}
       </div>
-      {/* <Button onClick={(e) => {handleExportWithComponent(e)}}>Предпросмотр</Button>
-      <Button onClick={(e) => {handleExport(e)}}>Экспортировать</Button> */}
     </div>
   );
 }
